@@ -5,7 +5,7 @@ export const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>PDS App</title>
+        <title>GradeRank</title>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <h1>Hello PDS App!</h1>
