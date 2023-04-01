@@ -1,9 +1,7 @@
 html,
 body {
   font-family: 'Sora', sans-serif;
-  max-width: 100vw;
-  max-height: 100vw;
-  overflow-x: hidden;
+  min-height: 100vh;
   padding: 0px;
   margin: 0px;
 }
