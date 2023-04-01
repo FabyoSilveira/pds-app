@@ -1,7 +1,5 @@
-export const Button = ({ props, children }: any): JSX.Element => {
-  return (
-    <button type='button' {...props}>
-      {children}
-    </button>
-  )
+import { ButtonProps, Button as MUIButton } from '@mui/material'
+
+export const Button = (props: ButtonProps): JSX.Element => {
+  return <MUIButton {...props} />
 }

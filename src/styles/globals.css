@@ -2,11 +2,25 @@ html,
 body {
   font-family: 'Sora', sans-serif;
   max-width: 100vw;
+  max-height: 100vw;
   overflow-x: hidden;
-  background-color: #999966;
+  padding: 0px;
+  margin: 0px;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+:root {
+  --blue: #3498db;
+  --lightBlue: #add8e6;
+  --darkBlue: #1a2b3c;
+  --gray: #cccccc;
+  --yellow: #ffa500;
+  --green: #6cc24a;
+  --red: #dc3545;
+  --darkGray: #333333;
+  --textColor: #475569;
 }
