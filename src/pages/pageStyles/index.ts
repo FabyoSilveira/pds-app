@@ -5,9 +5,10 @@ import styled from 'styled-components'
 export const WrapperDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-evenly;
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
 `
 
 export const LoginBoxDiv = styled.div`
@@ -15,9 +16,6 @@ export const LoginBoxDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   min-width: 300px;
-  @media (max-width: 755px) {
-    justify-content: start;
-  }
 `
 
 export const StyledInput = styled(Input)`
@@ -26,5 +24,12 @@ export const StyledInput = styled(Input)`
 
 export const StyledButton = styled(Button)`
   height: 50px;
+  margin-top: 20px;
   background-color: var(--blue);
+`
+
+export const ErrorSpanStyle = styled.span`
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: var(--red);
 `
