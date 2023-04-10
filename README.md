@@ -6,7 +6,7 @@ Iremos criar um sistema para avaliação de professores e aulas no DCC, cujo obj
 - outra que mostraria um compilado com as médias das notas inseridas por todas as avaliações.
 
 ## Integrantes 👧🏻
-- Ailton Vinaud Junior (Backend, Devops)
+- Ailton Vinaud Junior (Backend)
 - Ana Flavia de Matos Souza (Frontend)
 - Fabyo Silveira Amorim (Frontend)
 - Taís Christofani (Backend)
@@ -63,7 +63,7 @@ Eu como usuário gostaria de criar um perfil para que as pessoas possam saber mi
 #### - Tarefas e responsáveis
 - Criação dos componentes de perfil e dados pessoais do usuário [Fabyo]
 - Criação da controller de retorno de dados de usuário [Ailton]
-- Criação da tebela de Perfil [Tais]
+- Criação da tabela de Perfil [Tais]
 
 ### 3 - Avaliar uma disciplina cursada
 Como usuário eu quero avaliar as disciplinas e professores das matérias que já cursei para que eu possa divulgar para outros estudantes como foi minha experiência.
