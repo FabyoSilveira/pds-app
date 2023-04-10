@@ -47,47 +47,62 @@ Como usuário, gostaria de poder mostrar que concordo ou discordo dos comentári
 
 
 ## BackLog da Sprint 2:
-### 1 - Criar conta para Login
-Eu como usuário gostaria de realizar login no sistema para proteger meu perfil de ser editado e conseguir consultar e editar minhas avaliações
+
+### 1 - Criar cadastro de usuário
+Eu como usuário gostaria de me cadastrar no sistema
 #### - Tarefas e responsáveis
 - Criação de ambiente EC2 AWS [Ailton]
 - Criação de Projeto Base C# .Net utilizando arquitetura em camadas [Ailton]
 - Criação de PipeLine automatizada para publicação na AWS [Ailton]
 - Criação de banco de dados RDS na AWS [Ailton]
-- Criação das tabelas de usuário [Ailton]
-- Criação da controller de autenticação [Tais]
-- Criação dos componentes da tela de login [Fabyo]
+- Criação dos componentes da interface de cadastro.[Fabyo]
+- Integração do front com o serviço de cadastro. [Fabyo]
 
-### 2 - Criar perfil de usuário
-Eu como usuário gostaria de criar um perfil para que as pessoas possam saber minhas características e me conhecerem melhor como estudante.
+- Criação das tabelas de usuário [Tais] 
+- Criação da rota de insert para cadastro de usuário. [Tais]
+- Criação da tela de cadastro.[Tais]
+
+### 2 - Criar conta para Login
+Eu como usuário gostaria de realizar login no sistema para proteger meu perfil de ser editado e conseguir consultar e editar minhas avaliações
 #### - Tarefas e responsáveis
-- Criação dos componentes de perfil e dados pessoais do usuário [Fabyo]
-- Criação da controller de retorno de dados de usuário [Ailton]
-- Criação da tabela de Perfil [Tais]
+- Criação de rota para autenticação [Ailton]
+
+- Refatoração da tela de login da interface [Ana]
+- Integração do front com serviço de login [Ana]
+- Criar lógica de permissão de acessibilidade das rotas (usuário logado) [Fabyo] / [Ana]
 
 ### 3 - Avaliar uma disciplina cursada
 Como usuário eu quero avaliar as disciplinas e professores das matérias que já cursei para que eu possa divulgar para outros estudantes como foi minha experiência.
 #### - Tarefas e responsáveis
+-- Banco:
 - Criar tabela de disciplinas [Tais]
 - Criar tabela de professores [Tais]
-- Criar tabela com questionario[Ailton]
+- Criar tabela com perguntas [Ailton]
+- Criar tabela de avaliação [Ailton]
+ (id_avaliação	id_disciplina	id_professor id_questionario id_usuario	resposta dataAvaliação)
+ 
+ --API:
 - Criar controller de disciplinas [Tais]
 - Criar controller de professores [Tais]
-- Criar controller para get de questionário [Ailton]
-- Criar tabela de avaliação [Ailton]
+- Criar controller para get de perguntas [Ailton]
+
+--Front:
+- Criar componente de select disciplinas e professores [Ana]
+- Criar tela de nova avaliação [Ana]
+
+--API:
 - Criar controler de Insert avaliação [Ailton]
 - Criar controller de Update avaliação [Tais]
-- Criar componente de select disciplinas e professores [Ana]
-- Criar componente de data [Ana]
-- Criar componente do botão avaliar [Ana]
-- Criar componente de avaliação [Ana]
 
-### 4 - Editar uma avaliação realizada
+--Front:
+- Criar tela de avaliação [Ana]
+- criar componente radio
+
+### 4 - Excluir uma avaliação realizada
 Eu, como usuário, gostaria de poder alterar uma avaliação realizada anteriormente, caso tenha preenchido algum campo errado ou mudado de opinião.
 #### - Tarefas e responsáveis
 - Criar rota de delete avaliação [Ailton]
-- Criar rota de update avaliação [Ailton]
-- Criar tela de edição de avaliação [Fabyo]
+- Inserir componente de exclusão de lista.
 
 ### 5 - Visualizar avaliação geral dos professores
 Eu como usuário gostaria de visualizar as notas dos professores avaliados
