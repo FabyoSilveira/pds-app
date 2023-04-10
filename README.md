@@ -32,7 +32,7 @@ Eu como usuário gostaria de visualizar as notas dos professores avaliados
 ### 6 - Visualizar avaliação geral das disciplinas
 Eu como usuário gostaria de visualizar as disciplinas avaliadas e suas notas médias
 ### 7 - Visualizar as avaliações individuais dos professores
-Eu como usuário gostaria de selecionar uma disciplina e visualizar detalhes de cada avaliação feita, incluindo dados do avaliador
+Eu como usuário gostaria de selecionar uma avaliação de um professor e visualizar detalhes de cada avaliação feita, incluindo dados do avaliador
 ### 8 - Visualizar as avaliações individuais das disciplinas
 Eu como usuário gostaria de selecionar uma disciplina e visualizar detalhes de cada avaliação feita, incluindo dados do avaliador
 ### 9 - Ordenar avaliações pela média de algum ou mais critérios
