@@ -1,5 +1,5 @@
 import { Loading } from '@/components/Loading'
-import { getUser } from '@/utils/auth'
+import { getUserCookie } from '@/utils/auth'
 import { LoggedUser } from '@/utils/auth/type'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
@@ -9,7 +9,7 @@ export const Home: NextPage = () => {
   const router = useRouter()
 
   useEffect(() => {
-    const loggedUser = getUser()
+    const loggedUser = getUserCookie()
 
     if (!loggedUser) {
       router.push('/')
