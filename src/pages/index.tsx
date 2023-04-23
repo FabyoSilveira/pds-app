@@ -10,7 +10,7 @@ import {
   WrapperDiv,
 } from './pageStyles'
 import { Input } from '@/components/Input'
-import { getUser, setUser } from '@/utils/auth'
+import { getUserCookie, setUserCookie } from '@/utils/auth'
 import { LoggedUser } from '@/utils/auth/type'
 import { Loading } from '@/components/Loading'
 
@@ -24,7 +24,7 @@ export const Login: NextPage = () => {
   const router = useRouter()
 
   useEffect(() => {
-    const loggedUser = getUser()
+    const loggedUser = getUserCookie()
 
     if (loggedUser) {
       router.push('/home')
@@ -43,7 +43,7 @@ export const Login: NextPage = () => {
       return
     }
 
-    setUser(mockUser)
+    setUserCookie(mockUser)
     router.push('/home')
   }
 

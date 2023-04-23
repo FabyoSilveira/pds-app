@@ -1,13 +1,13 @@
 import { setCookie, getCookie, deleteCookie } from 'cookies-next'
 import { LoggedUser } from './type'
 
-export const setUser = (user: LoggedUser): void => {
+export const setUserCookie = (user: LoggedUser): void => {
   const userCookie = JSON.stringify(user)
 
   setCookie('user', userCookie)
 }
 
-export const getUser = (): LoggedUser | null => {
+export const getUserCookie = (): LoggedUser | null => {
   const userCookie = getCookie('user')
 
   if (!userCookie) {
@@ -19,6 +19,6 @@ export const getUser = (): LoggedUser | null => {
   return loggedUser
 }
 
-export const removeUser = (): void => {
+export const removeUserCookie = (): void => {
   deleteCookie('user')
 }
