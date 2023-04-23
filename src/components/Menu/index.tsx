@@ -1,8 +1,17 @@
-import { DivisorDiv, MenuWrapperDiv, UserSectionDiv } from './style'
-import { MenuProps } from './type'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+
+import {
+  DivisorDiv,
+  LogoutIcon,
+  MenuWrapperDiv,
+  UserLogoutSection,
+  UserSectionDiv,
+} from './style'
+import { MenuProps } from './type'
 import { ListItem } from './ListItem'
+import { removeUserCookie } from '@/utils/auth'
+import { useRouter } from 'next/router'
 
 const menuItems = [
   {
@@ -28,11 +37,26 @@ const menuItems = [
 ]
 
 export const Menu = ({ user, activeItem }: MenuProps) => {
+  const router = useRouter()
+
+  const logout = (): void => {
+    removeUserCookie()
+    router.push('/')
+  }
+
   return (
     <MenuWrapperDiv>
       <UserSectionDiv>
         <FontAwesomeIcon icon={faUser} size='4x' />
-        <h3>{user}</h3>
+        <UserLogoutSection>
+          <h3>{user}</h3>
+          <LogoutIcon
+            icon={faRightFromBracket}
+            onClick={() => {
+              logout()
+            }}
+          />
+        </UserLogoutSection>
       </UserSectionDiv>
       <DivisorDiv>
         <hr style={{ width: '100%', border: '1px solid' }} />

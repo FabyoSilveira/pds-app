@@ -7,7 +7,7 @@ import { PageLayout } from '@/components/PageLayout'
 import { getUserCookie } from '@/utils/auth'
 import { LoggedUser } from '@/utils/auth/type'
 
-export const Home: NextPage = () => {
+export const NewEvaluation: NextPage = () => {
   const router = useRouter()
 
   useEffect(() => {
@@ -27,8 +27,8 @@ export const Home: NextPage = () => {
   return (
     <>
       {!loading ? (
-        <PageLayout user={user?.name} activeMenuItem={0}>
-          <h1>{`Bem vindo ao seu perfil, ${user?.name}!`}</h1>
+        <PageLayout user={user?.name} activeMenuItem={3}>
+          <h1>{`Aqui você poderá fazer uma nova avaliação, ${user?.name}!`}</h1>
         </PageLayout>
       ) : (
         <Loading />
@@ -37,4 +37,4 @@ export const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default NewEvaluation

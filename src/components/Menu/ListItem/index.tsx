@@ -20,8 +20,7 @@ export const ListItem = ({ text, icon, active, href }: ListItemProps) => {
   const router = useRouter()
 
   const onClickItem = () => {
-    console.log(href)
-    //router.push(href)
+    router.push(href)
   }
 
   return (
