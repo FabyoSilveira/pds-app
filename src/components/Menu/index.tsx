@@ -49,7 +49,14 @@ export const Menu = ({ user, activeItem }: MenuProps) => {
       <UserSectionDiv>
         <FontAwesomeIcon icon={faUser} size='4x' />
         <UserLogoutSection>
-          <h3>{user}</h3>
+          <div
+            style={{
+              width: '100px',
+            }}
+            title={user}
+          >
+            <h3>{user}</h3>
+          </div>
           <LogoutIcon
             icon={faRightFromBracket}
             onClick={() => {
