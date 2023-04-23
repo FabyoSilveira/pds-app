@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 export const MenuWrapperDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,6 +16,22 @@ export const UserSectionDiv = styled.div`
   padding-left: 20px;
   margin-top: 20px;
   gap: 20px;
+`
+
+export const UserLogoutSection = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+`
+
+export const LogoutIcon = styled(FontAwesomeIcon)`
+  transition: 0.15s ease-in;
+  :hover {
+    cursor: pointer;
+    color: var(--blue);
+    font-size: 20px;
+  }
 `
 
 export const DivisorDiv = styled.div`
