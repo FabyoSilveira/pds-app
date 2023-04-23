@@ -16,6 +16,7 @@ import { Loading } from '@/components/Loading'
 
 const mockUser: LoggedUser = {
   id: '54321',
+  name: 'Fabyo',
   login: 'fabyosilveira',
   password: '123456',
 }
