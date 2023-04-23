@@ -1,4 +1,5 @@
 import { Loading } from '@/components/Loading'
+import { PageLayout } from '@/components/PageLayout'
 import { getUserCookie } from '@/utils/auth'
 import { LoggedUser } from '@/utils/auth/type'
 import { NextPage } from 'next'
@@ -23,21 +24,15 @@ export const Home: NextPage = () => {
   const [user, setUser] = useState<LoggedUser>()
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-        width: '100vw',
-      }}
-    >
+    <>
       {!loading ? (
-        <h1>{`Welcome to Grade Rank, ${user?.login}!`}</h1>
+        <PageLayout user={user?.name} activeMenuItem={0}>
+          <h1>{`Bem vindo ao seu perfil, ${user?.name}!`}</h1>
+        </PageLayout>
       ) : (
         <Loading />
       )}
-    </div>
+    </>
   )
 }
 
