@@ -4,19 +4,19 @@ import { useRouter } from 'next/router'
 
 import {
   ErrorSpanStyle,
-  LoginBoxDiv,
-  StyledButton,
+  LoginButton,
   StyledInput,
-  WrapperDiv,
-} from './pageStyles'
+  SubscribeButton,
+} from './pageStyles/Login'
 import { Input } from '@/components/Input'
 import { getUserCookie, setUserCookie } from '@/utils/auth'
 import { LoggedUser } from '@/utils/auth/type'
 import { Loading } from '@/components/Loading'
+import AuthPageLayout from '@/components/AuthPageLayout'
 
 const mockUser: LoggedUser = {
   id: '54321',
-  name: 'Fabyo',
+  name: 'Fabyo Silveira',
   login: 'fabyosilveira',
   password: '123456',
 }
@@ -48,46 +48,58 @@ export const Login: NextPage = () => {
     router.push('/home')
   }
 
+  const goToSubscriptionPage = () => {
+    router.push('/subscribe')
+  }
+
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
       {!loading ? (
-        <WrapperDiv>
-          <img src={'/assets/logoPNG.png'} width='425px' height='150px' />
-          <LoginBoxDiv>
-            <h2>Faça seu login para começar a avaliar</h2>
-            <StyledInput
-              id='outlined-basic'
-              label='Login'
-              variant='outlined'
-              error={error}
-              value={login.user}
-              onChange={(e: any) => {
-                setError(false)
-                setLogin((prev) => ({ ...prev, user: e.target.value }))
-              }}
-            />
-            <Input
-              id='outlined-basic'
-              label='Senha'
-              variant='outlined'
-              type='password'
-              error={error}
-              value={login.password}
-              onChange={(e) => {
-                setError(false)
-                setLogin((prev) => ({ ...prev, password: e.target.value }))
-              }}
-            />
-            {error ? (
-              <ErrorSpanStyle>Usuário ou senha incorretos!</ErrorSpanStyle>
-            ) : (
-              <></>
-            )}
-            <StyledButton variant='contained' onClick={onSubmit}>
-              ENTRAR
-            </StyledButton>
-          </LoginBoxDiv>
-        </WrapperDiv>
+        <AuthPageLayout>
+          <h2>Faça seu login para começar a avaliar</h2>
+          <StyledInput
+            id='outlined-basic'
+            label='Login'
+            variant='outlined'
+            error={error}
+            value={login.user}
+            onChange={(e: any) => {
+              setError(false)
+              setLogin((prev) => ({ ...prev, user: e.target.value }))
+            }}
+          />
+          <Input
+            id='outlined-basic'
+            label='Senha'
+            variant='outlined'
+            type='password'
+            error={error}
+            value={login.password}
+            onChange={(e) => {
+              setError(false)
+              setLogin((prev) => ({ ...prev, password: e.target.value }))
+            }}
+          />
+          {error ? (
+            <ErrorSpanStyle>Usuário ou senha incorretos!</ErrorSpanStyle>
+          ) : (
+            <></>
+          )}
+          <LoginButton variant='contained' onClick={onSubmit}>
+            ENTRAR
+          </LoginButton>
+          <span style={{ marginTop: '100px', fontWeight: 'bold' }}>
+            Não possui conta?
+          </span>
+          <SubscribeButton
+            variant='contained'
+            onClick={() => {
+              goToSubscriptionPage()
+            }}
+          >
+            Criar conta
+          </SubscribeButton>
+        </AuthPageLayout>
       ) : (
         <Loading />
       )}
