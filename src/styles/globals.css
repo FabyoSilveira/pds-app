@@ -2,6 +2,7 @@ html,
 body {
   font-family: 'Sora', sans-serif;
   min-height: 100vh;
+  min-width: 100vw;
   padding: 0px;
   margin: 0px;
 }
