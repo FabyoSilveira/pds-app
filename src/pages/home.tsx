@@ -75,6 +75,7 @@ export const Home: NextPage = () => {
                 name="nome"
                 value={formData.nome}
                 onChange={handleChange}
+                placeholder="Fabyo Silveira"
               />
             </FormGroup>
             <FormGroup>
@@ -85,6 +86,7 @@ export const Home: NextPage = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                placeholder="fabyosilveira@aol.com"
               />
             </FormGroup>
             <FormGroup>
@@ -95,6 +97,7 @@ export const Home: NextPage = () => {
                 name="matricula"
                 value={formData.matricula}
                 onChange={handleChange}
+                placeholder="2020000000"
               />
             </FormGroup>
             <FormGroup>
@@ -105,6 +108,7 @@ export const Home: NextPage = () => {
                 name="senha"
                 value={formData.senha}
                 onChange={handleChange}
+                placeholder="******"
               />
             </FormGroup>
             <FormGroup>
