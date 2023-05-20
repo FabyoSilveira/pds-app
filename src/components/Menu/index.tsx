@@ -47,7 +47,7 @@ export const Menu = ({ user, activeItem }: MenuProps) => {
   return (
     <MenuWrapperDiv>
       <UserSectionDiv>
-        <FontAwesomeIcon icon={faUser} size='4x' />
+        <FontAwesomeIcon icon={faUser} size='3x' />
         <UserLogoutSection>
           <div
             style={{

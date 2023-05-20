@@ -14,8 +14,8 @@ export const AuthWrapperBoxDiv = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
-  padding: 100px;
-  width: calc(100vw - 300px);
+  padding: 75px;
+  width: calc(100vw - 450px);
   border-radius: 30px;
   background-color: var(--white);
 `
