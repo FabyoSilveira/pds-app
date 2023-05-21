@@ -12,7 +12,7 @@ export const PageLayout = ({
       <NavBar user={user} />
       <div style={{ display: 'flex' }}>
         <Menu user={user} activeItem={activeMenuItem} />
-        <div style={{ paddingLeft: '30px' }}>{children}</div>
+        <div style={{ paddingLeft: '5rem', paddingTop: '3rem' }}>{children}</div>
       </div>
     </>
   )
