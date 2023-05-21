@@ -13,16 +13,17 @@ export const MenuWrapperDiv = styled.div`
 export const UserSectionDiv = styled.div`
   display: flex;
   align-items: center;
-  padding-left: 20px;
-  margin-top: 20px;
-  gap: 20px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  margin-top: 1.25rem;
+  gap: 1.25rem;
 `
 
 export const UserLogoutSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 2rem;
 `
 
 export const LogoutIcon = styled(FontAwesomeIcon)`

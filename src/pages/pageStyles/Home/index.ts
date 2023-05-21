@@ -2,21 +2,19 @@ import styled from 'styled-components';
 
 export const Row = styled.div`
   width: 100%;
-  padding: 2rem 0 0 5rem;
 `;
 
 export const HorizontalRule = styled.hr`
   border: none;
   border-top: 1px solid #dee2e6;
-  margin: 2rem 0 1rem 0;
+  margin: 0 0 1rem 0;
   width: 85%;
 `;
 
 export const FormContainer = styled.form`
   display: flex;
   flex-wrap: wrap;
-  padding-top: 2rem;
-  padding-left: 5rem;
+  padding-top: 1rem;
 `;
 
 export const FormGroup = styled.div`
