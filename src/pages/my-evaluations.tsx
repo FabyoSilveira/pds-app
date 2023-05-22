@@ -7,9 +7,7 @@ import { PageLayout } from '@/components/PageLayout'
 import { getUserCookie } from '@/utils/auth'
 import { LoggedUser } from '@/utils/auth/type'
 
-import { 
-  tableStyles
-} from './pageStyles/MyEvaluations';
+import { tableStyles } from './pageStyles/MyEvaluations';
 
 
 const MyEvaluations: NextPage = () => {
