@@ -2,7 +2,7 @@
 
 export const tableStyles = `
   .table {
-    width: 80%;
+    width: 95%;
     margin-bottom: 1rem;
     color: #212529;
     table-layout: fixed;
@@ -39,7 +39,7 @@ export const tableStyles = `
   }
 
   .data-rows {
-    font-weight: 600;
+    font-weight: 500;
   }
 
   .table a {
