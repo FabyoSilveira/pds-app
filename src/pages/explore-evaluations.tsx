@@ -55,7 +55,7 @@ export const ExploreEvaluations: NextPage = () => {
               <h2>Programação e Desenvolvimento de Software I</h2>
               <h3>DCC203</h3>
               <p>33 avaliações</p>
-              <a href="#">Ver Detalhes</a>
+              <a href="/evaluation-details">Ver Detalhes</a>
             </Card>
             <Card>
               <h2>Richarlisson</h2>
