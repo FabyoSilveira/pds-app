@@ -13,13 +13,7 @@ import { getUserCookie, setUserCookie } from '@/utils/auth'
 import { LoggedUser } from '@/utils/auth/type'
 import { Loading } from '@/components/Loading'
 import AuthPageLayout from '@/components/AuthPageLayout'
-
-const mockUser: LoggedUser = {
-  id: '54321',
-  name: 'Fabyo Silveira',
-  login: 'fabyosilveira',
-  password: '123456',
-}
+import api from '@/api'
 
 export const Login: NextPage = () => {
   const router = useRouter()
@@ -35,17 +29,36 @@ export const Login: NextPage = () => {
   }, [])
 
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
+  const [error, setError] = useState({ active: false, message: '' })
   const [login, setLogin] = useState({ user: '', password: '' })
 
   const onSubmit = () => {
-    if (login.user !== mockUser.login || login.password !== mockUser.password) {
-      setError(true)
+    if (!login.user || !login.password) {
+      setError({
+        active: true,
+        message: 'Preencha os campos obrigatórios!',
+      })
       return
     }
 
-    setUserCookie(mockUser)
-    router.push('/home')
+    api
+      .post('Auth', { email: login.user, password: login.password })
+      .then((res) => {
+        setUserCookie({
+          id: res.data.id,
+          name: res.data.name,
+          registration: res.data.registration,
+          email: res.data.email,
+          password: res.data.password,
+        } as LoggedUser)
+        router.push('/home')
+      })
+      .catch((err) => {
+        setError({
+          active: true,
+          message: 'Usuário ou senha incorretos!',
+        })
+      })
   }
 
   const goToSubscriptionPage = () => {
@@ -61,10 +74,10 @@ export const Login: NextPage = () => {
             id='outlined-basic'
             label='Login'
             variant='outlined'
-            error={error}
+            error={error.active}
             value={login.user}
             onChange={(e: any) => {
-              setError(false)
+              setError({ active: false, message: '' })
               setLogin((prev) => ({ ...prev, user: e.target.value }))
             }}
           />
@@ -73,15 +86,15 @@ export const Login: NextPage = () => {
             label='Senha'
             variant='outlined'
             type='password'
-            error={error}
+            error={error.active}
             value={login.password}
             onChange={(e) => {
-              setError(false)
+              setError({ active: false, message: '' })
               setLogin((prev) => ({ ...prev, password: e.target.value }))
             }}
           />
-          {error ? (
-            <ErrorSpanStyle>Usuário ou senha incorretos!</ErrorSpanStyle>
+          {error.active ? (
+            <ErrorSpanStyle>{error.message}</ErrorSpanStyle>
           ) : (
             <></>
           )}

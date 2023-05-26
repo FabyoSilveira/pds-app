@@ -1,13 +1,13 @@
-import { NextPage } from 'next';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { NextPage } from 'next'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
-import { Loading } from '@/components/Loading';
-import { PageLayout } from '@/components/PageLayout';
-import { getUserCookie } from '@/utils/auth';
-import { LoggedUser } from '@/utils/auth/type';
+import { Loading } from '@/components/Loading'
+import { PageLayout } from '@/components/PageLayout'
+import { getUserCookie } from '@/utils/auth'
+import { LoggedUser } from '@/utils/auth/type'
 
-import { 
+import {
   Row,
   HorizontalRule,
   FormContainer,
@@ -15,48 +15,48 @@ import {
   Label,
   Input,
   SubmitButton,
-  ReverseButton
-} from './pageStyles/Home';
+  ReverseButton,
+} from './pageStyles/Home'
 
 interface FormData {
-  nome: string;
-  email: string;
-  matricula: string;
-  senha: string;
+  nome: string
+  email: string
+  matricula: string
+  senha: string
 }
 
 export const Home: NextPage = () => {
-  const router = useRouter();
+  const router = useRouter()
 
   useEffect(() => {
-    const loggedUser = getUserCookie();
+    const loggedUser = getUserCookie()
 
     if (!loggedUser) {
-      router.push('/');
+      router.push('/')
     } else {
-      setUser(loggedUser as LoggedUser);
-      setLoading(false);
+      setUser(loggedUser as LoggedUser)
+      setLoading(false)
     }
-  }, []);
+  }, [])
 
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<LoggedUser>();
+  const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState<LoggedUser>()
   const [formData, setFormData] = useState<FormData>({
     nome: '',
     email: '',
     matricula: '',
     senha: '',
-  });
+  })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
+    const { name, value } = e.target
+    setFormData((prevData) => ({ ...prevData, [name]: value }))
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(formData); // You can perform any action with the form data here
-  };
+    e.preventDefault()
+    console.log(formData) // You can perform any action with the form data here
+  }
 
   return (
     <>
@@ -68,54 +68,58 @@ export const Home: NextPage = () => {
           </Row>
           <FormContainer onSubmit={handleSubmit}>
             <FormGroup>
-              <Label htmlFor="nome">Nome</Label>
+              <Label htmlFor='nome'>Nome</Label>
               <Input
-                type="text"
-                id="nome"
-                name="nome"
-                value={formData.nome}
+                disabled
+                type='text'
+                id='nome'
+                name='nome'
+                value={user?.name}
                 onChange={handleChange}
-                placeholder="Fabyo Silveira"
+                placeholder='Fabyo Silveira'
               />
             </FormGroup>
             <FormGroup>
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor='email'>Email</Label>
               <Input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
+                disabled
+                type='email'
+                id='email'
+                name='email'
+                value={user?.email}
                 onChange={handleChange}
-                placeholder="fabyosilveira@aol.com"
+                placeholder='fabyosilveira@aol.com'
               />
             </FormGroup>
             <FormGroup>
-              <Label htmlFor="matricula">Matrícula</Label>
+              <Label htmlFor='matricula'>Matrícula</Label>
               <Input
-                type="text"
-                id="matricula"
-                name="matricula"
-                value={formData.matricula}
+                disabled
+                type='text'
+                id='matricula'
+                name='matricula'
+                value={user?.registration}
                 onChange={handleChange}
-                placeholder="2020000000"
+                placeholder='2020000000'
               />
             </FormGroup>
             <FormGroup>
-              <Label htmlFor="senha">Senha</Label>
+              <Label htmlFor='senha'>Senha</Label>
               <Input
-                type="password"
-                id="senha"
-                name="senha"
-                value={formData.senha}
+                disabled
+                type='password'
+                id='senha'
+                name='senha'
+                value={user?.password}
                 onChange={handleChange}
-                placeholder="******"
+                placeholder='******'
               />
             </FormGroup>
             <FormGroup>
-              <SubmitButton type="submit">SALVAR</SubmitButton>
+              <SubmitButton type='submit'>SALVAR</SubmitButton>
             </FormGroup>
             <FormGroup>
-              <ReverseButton type="reverse">REVERTER ALTERAÇÕES</ReverseButton>
+              <ReverseButton type='reverse'>REVERTER ALTERAÇÕES</ReverseButton>
             </FormGroup>
           </FormContainer>
         </PageLayout>
@@ -123,7 +127,7 @@ export const Home: NextPage = () => {
         <Loading />
       )}
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
