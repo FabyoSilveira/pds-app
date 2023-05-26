@@ -84,6 +84,8 @@ Eu como usuário gostaria de me cadastrar no sistema
 - Criação de Projeto Base C# .Net utilizando arquitetura em camadas [Ailton]
 - Criação de PipeLine automatizada para publicação na AWS [Ailton]
 - Criação de banco de dados RDS na AWS [Ailton]
+- Criação do repositório com nextjs configurado.[Fabyo] (Done)
+- Configuração inicial do typescript/prettier e biblioteca de estilização - ambiente developer friendly.[Fabyo] (Done)
 - Criação dos componentes da interface de cadastro.[Fabyo] (Done)
 - Criação da tela de cadastro.[Fabyo] (Done)
 - Integração do front com o serviço de cadastro. [Fabyo] (Done)
@@ -103,7 +105,7 @@ Eu como usuário gostaria de realizar login no sistema para proteger meu perfil 
 - Criação dos componentes da interface de login. [Fabyo](Done)
 - Criação da tela de login.[Fabyo] (Done)
 - Refatoração da tela de login da interface [Fabyo](Done)
-- Integração do front com serviço de login [Fabyo]
+- Integração do front com serviço de login [Fabyo] (Done)
 - Criar lógica de permissão de acessibilidade das rotas (usuário logado) [Fabyo] (Done)
 
 ### 3 - Avaliar uma disciplina cursada
