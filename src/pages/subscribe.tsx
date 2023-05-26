@@ -43,7 +43,7 @@ export const Subscribe: NextPage = () => {
     }
 
     api
-      .post('/Login', { id: 0, ...account })
+      .post('Login', { id: 0, ...account })
       .then((res) => {
         console.log(res)
         router.push('/')

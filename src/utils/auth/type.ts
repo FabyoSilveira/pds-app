@@ -1,6 +1,7 @@
 export type LoggedUser = {
-  id: string
+  id: number
   name: string
-  login: string
+  email: string
+  registration: string
   password: string
 }
