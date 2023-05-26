@@ -7,34 +7,85 @@ import { PageLayout } from '@/components/PageLayout'
 import { getUserCookie } from '@/utils/auth'
 import { LoggedUser } from '@/utils/auth/type'
 
+import {
+  Container,
+  Title,
+  Form,
+  Label,
+  Select,
+  Input,
+  Button,
+  LoadingContainer,
+} from './pageStyles/NewEvaluation';
+
+
 export const NewEvaluation: NextPage = () => {
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
-    const loggedUser = getUserCookie()
+    const loggedUser = getUserCookie();
 
     if (!loggedUser) {
-      router.push('/')
+      router.push('/');
     } else {
-      setUser(loggedUser as LoggedUser)
-      setLoading(false)
+      setUser(loggedUser as LoggedUser);
+      setLoading(false);
     }
-  }, [])
+  }, []);
 
-  const [loading, setLoading] = useState(true)
-  const [user, setUser] = useState<LoggedUser>()
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<LoggedUser>();
+  const [selectedDiscipline, setSelectedDiscipline] = useState('');
+  const [selectedSemester, setSelectedSemester] = useState('');
+
+  const handleDisciplineChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedDiscipline(event.target.value);
+  };
+
+  const handleSemesterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedSemester(event.target.value);
+  };
+
+  const handleNextPageClick = () => {
+    // Perform any necessary validations or processing before navigating to the next page
+    router.push('/next-page');
+  };
 
   return (
     <>
       {!loading ? (
         <PageLayout user={user?.name} activeMenuItem={3}>
-          <h1>{`Aqui você poderá fazer uma nova avaliação, ${user?.name}!`}</h1>
+          <Title>Nova Avaliação</Title>
+          <Form>
+            <Label>Qual disciplina deseja avaliar?</Label>
+            <Select value={selectedDiscipline} onChange={handleDisciplineChange}>
+              <option value="">Selecione a disciplina</option>
+              <option value="Prática em Desenvolvimento de Software I">Prática em Desenvolvimento de Software I</option>
+              <option value="Algoritmos I">Algoritmos I</option>
+              <option value="Fundamentos de Sistemas Paralelos e Distribuídos">Fundamentos de Sistemas Paralelos e Distribuídos</option>
+              <option value="Geometria Analítica e Álgebra Linear">Geometria Analítica e Álgebra Linear</option>
+              <option value="Lorem Ipsum">Lorem Ipsum</option>
+              <option value="Lorem Ipsum">Lorem Ipsum</option>
+              <option value="Lorem Ipsum">Lorem Ipsum</option>
+              <option value="Lorem Ipsum">Lorem Ipsum</option>
+            </Select>
+            <Label>Em qual semestre ela foi realizada?</Label>
+            <Input
+              type="text"
+              value={selectedSemester}
+              onChange={handleSemesterChange}
+              placeholder="____ / _"
+            />
+            <Button onClick={handleNextPageClick}>Próxima Página</Button>
+          </Form>
         </PageLayout>
       ) : (
-        <Loading />
+        <LoadingContainer>
+          <Loading />
+        </LoadingContainer>
       )}
     </>
-  )
-}
+  );
+};
 
-export default NewEvaluation
+export default NewEvaluation;
