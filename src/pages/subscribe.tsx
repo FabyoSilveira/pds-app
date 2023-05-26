@@ -11,6 +11,7 @@ import {
 import { Input } from '@/components/Input'
 import { Loading } from '@/components/Loading'
 import AuthPageLayout from '@/components/AuthPageLayout'
+import api from '@/api'
 
 export const Subscribe: NextPage = () => {
   const router = useRouter()
@@ -21,6 +22,7 @@ export const Subscribe: NextPage = () => {
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [account, setAccount] = useState({
     name: '',
     email: '',
@@ -35,11 +37,22 @@ export const Subscribe: NextPage = () => {
       !account.registration ||
       !account.password
     ) {
+      setErrorMessage('Preencha todos os dados para se cadastrar!')
       setError(true)
       return
     }
 
-    router.push('/')
+    api
+      .post('/Login', { id: 0, ...account })
+      .then((res) => {
+        console.log(res)
+        router.push('/')
+      })
+      .catch((err) => {
+        setErrorMessage(err.response.data)
+        setError(true)
+        console.log(err)
+      })
   }
 
   return (
@@ -99,13 +112,7 @@ export const Subscribe: NextPage = () => {
               }}
             />
           </InputSectionDiv>
-          {error ? (
-            <ErrorSpanStyle>
-              Preencha todos os dados para se cadastrar!
-            </ErrorSpanStyle>
-          ) : (
-            <></>
-          )}
+          {error ? <ErrorSpanStyle>{errorMessage}</ErrorSpanStyle> : <></>}
           <SubscribeButton variant='contained' onClick={onSubmit}>
             Cadastrar
           </SubscribeButton>
