@@ -8,12 +8,10 @@ import { getUserCookie } from '@/utils/auth'
 import { LoggedUser } from '@/utils/auth/type'
 
 import {
-  Container,
   Title,
   Form,
   Label,
   Select,
-  Input,
   Button,
   LoadingContainer,
 } from './pageStyles/NewEvaluation';
@@ -36,18 +34,12 @@ export const NewEvaluation: NextPage = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<LoggedUser>();
   const [selectedDiscipline, setSelectedDiscipline] = useState('');
-  const [selectedSemester, setSelectedSemester] = useState('');
 
   const handleDisciplineChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedDiscipline(event.target.value);
   };
 
-  const handleSemesterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedSemester(event.target.value);
-  };
-
   const handleNextPageClick = () => {
-    // Perform any necessary validations or processing before navigating to the next page
     router.push('/new-evaluation-2');
   };
 
