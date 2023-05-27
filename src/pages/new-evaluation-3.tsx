@@ -13,7 +13,7 @@ import {
   QuestionContainer,
   QuestionLabel,
   RadioButtonsContainer,
-  NextPageButton
+  SubmitButton
 } from './pageStyles/NewEvaluation2';
 
 
@@ -34,8 +34,8 @@ export const NewEvaluation2: NextPage = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<LoggedUser>();
 
-  const handleNextPageClick = () => {
-    router.push('/new-evaluation-3');
+  const handleSubmitClick = () => {
+    router.push('/explore-evaluations');
   };
 
   return (
@@ -43,7 +43,7 @@ export const NewEvaluation2: NextPage = () => {
       {!loading ? (
         <PageLayout user={user?.name} activeMenuItem={3}>
           <Title>Nova Avaliação</Title>
-          <Subtitle>Sobre a disciplina</Subtitle>
+          <Subtitle>Sobre o Professor</Subtitle>
 
           {/* Question 1 */}
           <QuestionContainer>
@@ -255,7 +255,7 @@ export const NewEvaluation2: NextPage = () => {
             </RadioButtonsContainer>
           </QuestionContainer>
 
-          <NextPageButton onClick={handleNextPageClick}>Próxima Página</NextPageButton>
+          <SubmitButton onClick={handleSubmitClick}>Enviar Avaliação</SubmitButton>
         </PageLayout>
       ) : (
         <Loading />
