@@ -48,7 +48,7 @@ export const NewEvaluation: NextPage = () => {
 
   const handleNextPageClick = () => {
     // Perform any necessary validations or processing before navigating to the next page
-    router.push('/next-page');
+    router.push('/new-evaluation-2');
   };
 
   return (
@@ -69,13 +69,6 @@ export const NewEvaluation: NextPage = () => {
               <option value="Lorem Ipsum">Lorem Ipsum</option>
               <option value="Lorem Ipsum">Lorem Ipsum</option>
             </Select>
-            <Label>Em qual semestre ela foi realizada?</Label>
-            <Input
-              type="text"
-              value={selectedSemester}
-              onChange={handleSemesterChange}
-              placeholder="____ / _"
-            />
             <Button onClick={handleNextPageClick}>Próxima Página</Button>
           </Form>
         </PageLayout>
