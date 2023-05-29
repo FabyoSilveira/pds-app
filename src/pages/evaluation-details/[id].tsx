@@ -16,6 +16,7 @@ import {
   StyledDiv,
   PageWidth,
 } from '../pageStyles/EvaluationDetails'
+import api from '@/api'
 
 export const EvaluationDetails: NextPage = () => {
   const router = useRouter()
@@ -32,14 +33,27 @@ export const EvaluationDetails: NextPage = () => {
     }
   }, [])
 
+  useEffect(() => {
+    api
+      .get(`Course?id=${courseId}`)
+      .then((res) => {
+        console.log(res)
+        setCourse(res.data)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }, [courseId])
+
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState<LoggedUser>()
+  const [course, setCourse] = useState()
 
   return (
     <>
       {!loading ? (
         <PageLayout user={user?.name} activeMenuItem={2}>
-          <h1>Programação e Desenvolvimento de Software I</h1>
+          <h1>{course?.name}</h1>
           <StyledH3>
             Professor(a) Relacionado(a): <StyledA href='#'>Gertrudes</StyledA>
           </StyledH3>

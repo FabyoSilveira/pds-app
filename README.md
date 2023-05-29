@@ -132,6 +132,7 @@ Como usuário eu quero avaliar as disciplinas e professores das matérias que j�
 
 - Criar componente de select disciplinas e professores [Ana]
 - Criar tela de nova avaliação [Ana]
+- Integração do front com serviço [Fabyo] (Done)
 
 --API:
 
@@ -170,7 +171,8 @@ Eu como usuário gostaria de visualizar as disciplinas avaliadas e suas notas m�
 - Criar rota que gere a média das avaliações das disciplinas [Tais]
 - Criar tela de visualização de avaliação das disciplinas:
   Criar componente de professores relacionados [Ana]
-  Criar componente de avaliação (barra crescente com percentual avaliativo para cada pergunta) [Fabyo]
+  Criar componente de avaliação (barra crescente com percentual avaliativo para cada pergunta)
+- Integração do front com serviço [Fabyo] (Done)
 
 ## Instruções para rodar 🖱️
 
