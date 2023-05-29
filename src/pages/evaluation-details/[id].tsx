@@ -34,15 +34,17 @@ export const EvaluationDetails: NextPage = () => {
   }, [])
 
   useEffect(() => {
-    api
-      .get(`Course?id=${courseId}`)
-      .then((res) => {
-        console.log(res)
-        setCourse(res.data)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
+    if (courseId) {
+      api
+        .get(`Course?id=${courseId}`)
+        .then((res) => {
+          console.log(res)
+          setCourse(res.data)
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+    }
   }, [courseId])
 
   const [loading, setLoading] = useState(true)
