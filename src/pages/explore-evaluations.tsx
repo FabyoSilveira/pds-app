@@ -1,29 +1,49 @@
-import { NextPage } from 'next';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { NextPage } from 'next'
+import { useRouter } from 'next/router'
+import { useEffect, useState, useSyncExternalStore } from 'react'
 
-import { Loading } from '@/components/Loading';
-import { PageLayout } from '@/components/PageLayout';
-import { getUserCookie } from '@/utils/auth';
-import { LoggedUser } from '@/utils/auth/type';
-import { FilterRow, Filter, Search, CardColumns, Card } from './pageStyles/ExploreEvaluations';
+import { Loading } from '@/components/Loading'
+import { PageLayout } from '@/components/PageLayout'
+import { getUserCookie } from '@/utils/auth'
+import { LoggedUser } from '@/utils/auth/type'
+import {
+  FilterRow,
+  Filter,
+  Search,
+  CardColumns,
+  Card,
+} from './pageStyles/ExploreEvaluations'
+import api from '@/api'
+import { Label } from './pageStyles/Home'
 
 export const ExploreEvaluations: NextPage = () => {
-  const router = useRouter();
+  const router = useRouter()
 
   useEffect(() => {
-    const loggedUser = getUserCookie();
+    const loggedUser = getUserCookie()
 
     if (!loggedUser) {
-      router.push('/');
+      router.push('/')
     } else {
-      setUser(loggedUser as LoggedUser);
-      setLoading(false);
+      setUser(loggedUser as LoggedUser)
+      setLoading(false)
     }
-  }, []);
 
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<LoggedUser>();
+    api
+      .get('CoursesList')
+      .then((res) => {
+        console.log(res.data)
+        setCoursesList(res.data)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }, [])
+
+  const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState<LoggedUser>()
+  const [coursesList, setCoursesList] = useState([])
+  const [filter, setFilter] = useState('')
 
   return (
     <>
@@ -31,69 +51,41 @@ export const ExploreEvaluations: NextPage = () => {
         <PageLayout user={user?.name} activeMenuItem={2}>
           <h1>{`Explorar Avaliações`}</h1>
           <FilterRow>
-            <Filter>
-              <label htmlFor="filter-type">Mostrar:</label>
-              <select className="custom-select" id="filter-type">
-                <option value="all">Todos</option>
-                <option value="subjects">Matérias</option>
-                <option value="teachers">Professores</option>
-              </select>
-              <label htmlFor="filter-sort">Ordenar por:</label>
-              <select className="custom-select" id="filter-sort">
-                <option value="recent">Mais recentes</option>
-                <option value="oldest">Mais antigas</option>
-                <option value="reviews">Mais avaliações</option>
-              </select>
-            </Filter>
             <Search>
-              <input type="text" placeholder="Buscar" />
-              <button>Buscar</button>
+              <Label style={{ marginBottom: '5px' }}>Filtro dinâmico</Label>
+              <input
+                type='text'
+                placeholder='Só digite e vamos filtrar para você! :)'
+                onChange={(ev) => {
+                  setFilter(ev.target.value)
+                }}
+              />
             </Search>
           </FilterRow>
           <CardColumns>
-            <Card>
-              <h2>Programação e Desenvolvimento de Software I</h2>
-              <h3>DCC203</h3>
-              <p>33 avaliações</p>
-              <a href="/evaluation-details">Ver Detalhes</a>
-            </Card>
-            <Card>
-              <h2>Richarlisson</h2>
-              <h3>Equações Diferenciais C</h3>
-              <p>7 avaliações</p>
-              <a href="#">Ver Detalhes</a>
-            </Card>
-            <Card>
-              <h2>Equações Diferenciais C</h2>
-              <h3>MAT040</h3>
-              <p>16 avaliações</p>
-              <a href="#">Ver Detalhes</a>
-            </Card>
-            <Card>
-              <h2>Gertrudes</h2>
-              <h3>Programação e Desenvolvimento de Software I</h3>
-              <p>20 avaliações</p>
-              <a href="#">Ver Detalhes</a>
-            </Card>
-            <Card>
-              <h2>Fundamentos de Sistemas Paralelos e Distribuídos</h2>
-              <h3>DCC641</h3>
-              <p>9 avaliações</p>
-              <a href="#">Ver Detalhes</a>
-            </Card>
-            <Card>
-              <h2>Pedro Pascal</h2>
-              <h3>Fundamentos de Sistemas Paralelos e Distribuídos</h3>
-              <p>13 avaliações</p>
-              <a href="#">Ver Detalhes</a>
-            </Card>
+            {coursesList
+              ?.filter((course: any) =>
+                course?.name
+                  .toLocaleLowerCase()
+                  .includes(filter.toLocaleLowerCase()),
+              )
+              .map((item: any, id) => {
+                return (
+                  <Card key={id}>
+                    <h2>{item?.name}</h2>
+                    <h3>{item?.code}</h3>
+                    <p>33 avaliações</p>
+                    <a href={`/evaluation-details/${item?.id}`}>Ver Detalhes</a>
+                  </Card>
+                )
+              })}
           </CardColumns>
         </PageLayout>
       ) : (
         <Loading />
       )}
     </>
-  );
+  )
 }
 
-export default ExploreEvaluations;
+export default ExploreEvaluations

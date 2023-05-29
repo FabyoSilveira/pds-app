@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const FilterRow = styled.div`
   display: flex;
@@ -6,19 +6,19 @@ export const FilterRow = styled.div`
   align-items: center;
   margin-bottom: 3rem;
   justify-content: space-between;
-`;
+`
 
 export const Filter = styled.div`
   display: flex;
   align-items: center;
   margin-right: 10px;
-  
+
   label {
     margin-right: 5px;
     font-size: 18px;
     font-weight: bold;
   }
-  
+
   select {
     margin-right: 2rem;
     cursor: pointer;
@@ -32,11 +32,11 @@ export const Filter = styled.div`
     background-position: right 8px center;
     background-size: 10px;
   }
-`;
+`
 
 export const Search = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
 
   input[type="text"] {
     width: 15rem;
@@ -59,7 +59,7 @@ export const Search = styled.div`
       background-color: #0056b3;
   }
 
-`;
+`
 
 export const CardColumns = styled.div`
   display: grid;
@@ -67,7 +67,7 @@ export const CardColumns = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1.75rem;
   margin-bottom: 5rem;
-`;
+`
 
 export const Card = styled.div`
   padding: 20px;
@@ -100,4 +100,4 @@ export const Card = styled.div`
     &:hover {
       color: #0056b3;
   }
-`;
+`
