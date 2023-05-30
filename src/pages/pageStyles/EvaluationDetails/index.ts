@@ -14,13 +14,13 @@ export const StyledH3 = styled.h3`
   font-size: 22px;
 `
 
-export const StyledA = styled.a`
+export const StyledA = styled.label`
   color: #007bff;
   font-size: 20px;
   margin-left: 1rem;
 `
 
-export const StyledH5 = styled.h5`
+export const StyledH5 = styled.h4`
   margin-top: -1rem;
   margin-bottom: 2rem;
   color: #717780;

@@ -35,6 +35,7 @@ export const NewEvaluation: NextPage = () => {
       .get('CoursesList')
       .then((res) => {
         setCoursesList(res.data)
+        setFetching(false)
       })
       .catch((err) => {
         console.error(err)
@@ -42,6 +43,7 @@ export const NewEvaluation: NextPage = () => {
   }, [])
 
   const [loading, setLoading] = useState(true)
+  const [fetching, setFetching] = useState(true)
   const [user, setUser] = useState<LoggedUser>()
   const [error, setError] = useState(false)
   const [coursesList, setCoursesList] = useState([])
@@ -68,30 +70,36 @@ export const NewEvaluation: NextPage = () => {
       {!loading ? (
         <PageLayout user={user?.name} activeMenuItem={3}>
           <Title>Nova Avaliação</Title>
-          <Form>
-            <Label>Qual disciplina deseja avaliar?</Label>
-            <Select
-              value={selectedDiscipline}
-              onChange={handleDisciplineChange}
-            >
-              <option value={-1}>Selecione a disciplina</option>
-              {coursesList.map((item: any, id) => {
-                return (
-                  <option key={id} value={item?.id}>
-                    {item?.name}
-                  </option>
-                )
-              })}
-            </Select>
-            {error ? (
-              <ErrorSpanStyle>
-                Selecione uma disciplina para avaliar!
-              </ErrorSpanStyle>
-            ) : (
-              <></>
-            )}
-            <Button onClick={handleNextPageClick}>AVALIAR</Button>
-          </Form>
+          {!fetching ? (
+            <>
+              <Form>
+                <Label>Qual disciplina deseja avaliar?</Label>
+                <Select
+                  value={selectedDiscipline}
+                  onChange={handleDisciplineChange}
+                >
+                  <option value={-1}>Selecione a disciplina</option>
+                  {coursesList.map((item: any, id) => {
+                    return (
+                      <option key={id} value={item?.id}>
+                        {item?.name}
+                      </option>
+                    )
+                  })}
+                </Select>
+                {error ? (
+                  <ErrorSpanStyle>
+                    Selecione uma disciplina para avaliar!
+                  </ErrorSpanStyle>
+                ) : (
+                  <></>
+                )}
+                <Button onClick={handleNextPageClick}>AVALIAR</Button>
+              </Form>
+            </>
+          ) : (
+            <Loading />
+          )}
         </PageLayout>
       ) : (
         <LoadingContainer>

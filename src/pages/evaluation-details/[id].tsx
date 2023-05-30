@@ -18,6 +18,8 @@ import {
 } from '../pageStyles/EvaluationDetails'
 import api from '@/api'
 
+const MAX_GRADE = 4
+
 export const EvaluationDetails: NextPage = () => {
   const router = useRouter()
   const { id: courseId } = router.query
@@ -43,80 +45,68 @@ export const EvaluationDetails: NextPage = () => {
         .catch((err) => {
           console.error(err)
         })
+
+      api
+        .get(`CourseEvaluation?id=${courseId}`)
+        .then((res) => {
+          setEvaluation(res.data)
+          setFetching(false)
+        })
+        .catch((err) => {
+          console.error(err)
+        })
     }
   }, [courseId])
 
   const [loading, setLoading] = useState(true)
+  const [fetching, setFetching] = useState(true)
   const [user, setUser] = useState<LoggedUser>()
   const [course, setCourse] = useState()
+  const [evaluation, setEvaluation] = useState([])
 
   return (
     <>
       {!loading ? (
         <PageLayout user={user?.name} activeMenuItem={2}>
-          <h1>{course?.name}</h1>
-          <StyledH3>
-            Professor(a) Relacionado(a): <StyledA href='#'>Gertrudes</StyledA>
-          </StyledH3>
-          <br />
-          <StyledH3>Média das Respostas:</StyledH3>
-          <StyledH5>Quanto maior a % mais pessoas concordaram</StyledH5>
-          <PageWidth>
-            <StyledProgressBarContainer>
-              <StyledDiv>
-                <span>
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit:
-                </span>
-              </StyledDiv>
-              <div>
-                <StyledProgress value={80} max={100} />
-                <span>80%</span>
-              </div>
-            </StyledProgressBarContainer>
-            <StyledProgressBarContainer>
-              <StyledDiv>
-                <span>Lorem ipsum dolor sit amet:</span>
-              </StyledDiv>
-              <div>
-                <StyledProgress value={60} max={100} />
-                <span>60%</span>
-              </div>
-            </StyledProgressBarContainer>
-            <StyledProgressBarContainer>
-              <StyledDiv>
-                <span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua:
-                </span>
-              </StyledDiv>
-              <div>
-                <StyledProgress value={75} max={100} />
-                <span>75%</span>
-              </div>
-            </StyledProgressBarContainer>
-            <StyledProgressBarContainer>
-              <StyledDiv>
-                <span>
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit:
-                </span>
-              </StyledDiv>
-              <div>
-                <StyledProgress value={90} max={100} />
-                <span>90%</span>
-              </div>
-            </StyledProgressBarContainer>
-            <StyledProgressBarContainer>
-              <StyledDiv>
-                <span>
-                  Lorem ipsum dolor sit amet consectetur adipiscing elit:
-                </span>
-              </StyledDiv>
-              <div>
-                <StyledProgress value={50} max={100} />
-                <span>50%</span>
-              </div>
-            </StyledProgressBarContainer>
-          </PageWidth>
+          {!fetching ? (
+            <>
+              <h1>{course?.name}</h1>
+              <StyledH3>
+                Professor(a) Relacionado(a):{' '}
+                <StyledA>{course?.nameProfessor}</StyledA>
+              </StyledH3>
+              <br />
+              <StyledH3>Média das Respostas:</StyledH3>
+              <StyledH5>
+                Quanto maior a porcentagem % mais pessoas concordaram
+              </StyledH5>
+              <PageWidth>
+                {evaluation?.length === 0 && courseId ? (
+                  <h1 style={{ color: 'var(--red)' }}>
+                    Essa matéria ainda não foi avaliada por nenhum aluno!
+                  </h1>
+                ) : (
+                  evaluation?.map((item) => {
+                    return (
+                      <StyledProgressBarContainer>
+                        <StyledDiv>
+                          <span>{item?.question}</span>
+                        </StyledDiv>
+                        <div>
+                          <StyledProgress value={item?.value} max={4} />
+                          <span>
+                            {((item?.value / MAX_GRADE) * 100).toFixed(1)}%
+                          </span>
+                        </div>
+                      </StyledProgressBarContainer>
+                    )
+                  })
+                )}
+              </PageWidth>
+            </>
+          ) : (
+            <Loading />
+          )}
         </PageLayout>
       ) : (
         <Loading />

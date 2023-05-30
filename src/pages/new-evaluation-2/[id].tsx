@@ -60,6 +60,7 @@ export const NewEvaluation2: NextPage = () => {
       .get('Question')
       .then((res) => {
         setQuestions(res.data)
+        setFetching(false)
       })
       .catch((err) => {
         console.error(err)
@@ -67,6 +68,7 @@ export const NewEvaluation2: NextPage = () => {
   }
 
   const [loading, setLoading] = useState(true)
+  const [fetching, setFetching] = useState(true)
   const [user, setUser] = useState<LoggedUser>()
   const [course, setCourse] = useState<any>({})
   const [questions, setQuestions] = useState<any>([])
@@ -151,90 +153,94 @@ export const NewEvaluation2: NextPage = () => {
       {!loading ? (
         <PageLayout user={user?.name} activeMenuItem={3}>
           <Title>Nova Avaliação</Title>
-          <Title style={{ fontSize: '1.4rem', color: 'var(--textColor)' }}>
-            {course?.name}
-          </Title>
-          <Subtitle>Sobre a disciplina</Subtitle>
-          {questions.map((question: any, id: any) => {
-            return (
-              <QuestionContainer>
-                <QuestionLabel>
-                  Pergunta {id + 1}: {question?.question}
-                </QuestionLabel>
-                <RadioButtonsContainer>
-                  <label htmlFor={`question1-concordo-totalmente-${id}`}>
-                    <input
-                      id={`question1-concordo-totalmente-${id}`}
-                      type='radio'
-                      name={`question${id}`}
-                      value={4}
-                      onChange={(ev) => {
-                        setAnswer(ev, id)
-                      }}
-                    />
-                    Concordo totalmente
-                  </label>
-                  <label htmlFor={`question1-concordo-${id}`}>
-                    <input
-                      id={`question1-concordo-${id}`}
-                      type='radio'
-                      name={`question${id}`}
-                      value={3}
-                      onChange={(ev) => {
-                        setAnswer(ev, id)
-                      }}
-                    />
-                    Concordo
-                  </label>
-                  <label htmlFor={`question1-nao-sei-${id}`}>
-                    <input
-                      id={`question1-nao-sei-${id}`}
-                      type='radio'
-                      name={`question${id}`}
-                      value={2}
-                      onChange={(ev) => {
-                        setAnswer(ev, id)
-                      }}
-                    />
-                    Não sei
-                  </label>
-                  <label htmlFor={`question1-discordo-${id}`}>
-                    <input
-                      id={`question1-discordo-${id}`}
-                      type='radio'
-                      name={`question${id}`}
-                      value={1}
-                      onChange={(ev) => {
-                        setAnswer(ev, id)
-                      }}
-                    />
-                    Discordo
-                  </label>
-                  <label htmlFor={`question1-discordo-totalmente-${id}`}>
-                    <input
-                      id={`question1-discordo-totalmente-${id}`}
-                      type='radio'
-                      name={`question${id}`}
-                      value={0}
-                      onChange={(ev) => {
-                        setAnswer(ev, id)
-                      }}
-                    />
-                    Discordo totalmente
-                  </label>
-                </RadioButtonsContainer>
-              </QuestionContainer>
-            )
-          })}
-          <NextPageButton onClick={handleNextPageClick}>
-            SALVAR AVALIAÇÃO
-          </NextPageButton>
-          {error.active ? (
-            <ErrorSpanStyle style={{ marginLeft: '10px' }}>
-              {error.message}
-            </ErrorSpanStyle>
+          {!fetching ? (
+            <>
+              <Title style={{ fontSize: '1.4rem', color: 'var(--textColor)' }}>
+                {course?.name}
+              </Title>
+              <Subtitle>Sobre a disciplina</Subtitle>
+              {questions.map((question: any, id: any) => {
+                return (
+                  <QuestionContainer>
+                    <QuestionLabel>{question?.question}</QuestionLabel>
+                    <RadioButtonsContainer>
+                      <label htmlFor={`question1-concordo-totalmente-${id}`}>
+                        <input
+                          id={`question1-concordo-totalmente-${id}`}
+                          type='radio'
+                          name={`question${id}`}
+                          value={4}
+                          onChange={(ev) => {
+                            setAnswer(ev, id)
+                          }}
+                        />
+                        Concordo totalmente
+                      </label>
+                      <label htmlFor={`question1-concordo-${id}`}>
+                        <input
+                          id={`question1-concordo-${id}`}
+                          type='radio'
+                          name={`question${id}`}
+                          value={3}
+                          onChange={(ev) => {
+                            setAnswer(ev, id)
+                          }}
+                        />
+                        Concordo
+                      </label>
+                      <label htmlFor={`question1-nao-sei-${id}`}>
+                        <input
+                          id={`question1-nao-sei-${id}`}
+                          type='radio'
+                          name={`question${id}`}
+                          value={2}
+                          onChange={(ev) => {
+                            setAnswer(ev, id)
+                          }}
+                        />
+                        Neutro
+                      </label>
+                      <label htmlFor={`question1-discordo-${id}`}>
+                        <input
+                          id={`question1-discordo-${id}`}
+                          type='radio'
+                          name={`question${id}`}
+                          value={1}
+                          onChange={(ev) => {
+                            setAnswer(ev, id)
+                          }}
+                        />
+                        Discordo
+                      </label>
+                      <label htmlFor={`question1-discordo-totalmente-${id}`}>
+                        <input
+                          id={`question1-discordo-totalmente-${id}`}
+                          type='radio'
+                          name={`question${id}`}
+                          value={0}
+                          onChange={(ev) => {
+                            setAnswer(ev, id)
+                          }}
+                        />
+                        Discordo totalmente
+                      </label>
+                    </RadioButtonsContainer>
+                  </QuestionContainer>
+                )
+              })}
+              <NextPageButton onClick={handleNextPageClick}>
+                SALVAR AVALIAÇÃO
+              </NextPageButton>
+              {error.active ? (
+                <ErrorSpanStyle style={{ marginLeft: '10px' }}>
+                  {error.message}
+                </ErrorSpanStyle>
+              ) : (
+                <></>
+              )}
+            </>
           ) : (
-            <></>
+            <Loading />
           )}
         </PageLayout>
       ) : (

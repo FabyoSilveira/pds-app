@@ -32,8 +32,8 @@ export const ExploreEvaluations: NextPage = () => {
     api
       .get('CoursesList')
       .then((res) => {
-        console.log(res.data)
         setCoursesList(res.data)
+        setFetching(false)
       })
       .catch((err) => {
         console.error(err)
@@ -41,6 +41,7 @@ export const ExploreEvaluations: NextPage = () => {
   }, [])
 
   const [loading, setLoading] = useState(true)
+  const [fetching, setFetching] = useState(true)
   const [user, setUser] = useState<LoggedUser>()
   const [coursesList, setCoursesList] = useState([])
   const [filter, setFilter] = useState('')
@@ -62,24 +63,36 @@ export const ExploreEvaluations: NextPage = () => {
               />
             </Search>
           </FilterRow>
-          <CardColumns>
-            {coursesList
-              ?.filter((course: any) =>
-                course?.name
-                  .toLocaleLowerCase()
-                  .includes(filter.toLocaleLowerCase()),
-              )
-              .map((item: any, id) => {
-                return (
-                  <Card key={id}>
-                    <h2>{item?.name}</h2>
-                    <h3>{item?.code}</h3>
-                    <p>33 avaliações</p>
-                    <a href={`/evaluation-details/${item?.id}`}>Ver Detalhes</a>
-                  </Card>
-                )
-              })}
-          </CardColumns>
+          {!fetching ? (
+            <>
+              <CardColumns>
+                {coursesList
+                  ?.filter((course: any) =>
+                    course?.name
+                      .toLocaleLowerCase()
+                      .includes(filter.toLocaleLowerCase()),
+                  )
+                  .map((item: any, id) => {
+                    return (
+                      <Card key={id}>
+                        <h2>{item?.name}</h2>
+                        <h3>{item?.code}</h3>
+                        {item?.evaluationTimes === 1 ? (
+                          <p>{item?.evaluationTimes} avaliação</p>
+                        ) : (
+                          <p>{item?.evaluationTimes} avaliações</p>
+                        )}
+                        <a href={`/evaluation-details/${item?.id}`}>
+                          Ver Detalhes
+                        </a>
+                      </Card>
+                    )
+                  })}
+              </CardColumns>
+            </>
+          ) : (
+            <Loading />
+          )}
         </PageLayout>
       ) : (
         <Loading />
