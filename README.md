@@ -89,10 +89,14 @@ Eu como usuário gostaria de me cadastrar no sistema
 - Criação dos componentes da interface de cadastro.[Fabyo] (Done)
 - Criação da tela de cadastro.[Fabyo] (Done)
 - Integração do front com o serviço de cadastro. [Fabyo] (Done)
-
 - Criação das tabelas de usuário [Tais]
 - Criação da rota de insert para cadastro de usuário. [Tais]
 - Criação da tela de cadastro.[Tais]
+- Criação da tela de ver perfil. [Ana]
+- Criação da tela de minhas avaliações. [Ana]
+- Criação da tela de explorar avaliações. [Ana]
+- Criação das telas de cadastrar nova avaliação. [Ana]
+- Criação da tela de detalhes da matéria. [Ana]
 
 ### 2 - Criar conta para Login
 
@@ -142,7 +146,7 @@ Como usuário eu quero avaliar as disciplinas e professores das matérias que j�
 --Front:
 
 - Criar tela de avaliação [Ana]
-- criar componente radio
+- Criar componente radio [Ana]
 
 ### 4 - Excluir uma avaliação realizada
 
@@ -171,7 +175,7 @@ Eu como usuário gostaria de visualizar as disciplinas avaliadas e suas notas m�
 - Criar rota que gere a média das avaliações das disciplinas [Tais]
 - Criar tela de visualização de avaliação das disciplinas:
   Criar componente de professores relacionados [Ana]
-  Criar componente de avaliação (barra crescente com percentual avaliativo para cada pergunta)
+  Criar componente de avaliação (barra crescente com percentual avaliativo para cada pergunta) [Ana]
 - Integração do front com serviço [Fabyo] (Done)
 
 ## Instruções para rodar 🖱️
