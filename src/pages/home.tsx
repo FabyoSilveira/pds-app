@@ -55,7 +55,6 @@ export const Home: NextPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log(formData) // You can perform any action with the form data here
   }
 
   return (

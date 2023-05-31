@@ -35,7 +35,7 @@ export const tableStyles = `
     width: 18%;
   }
   .detalhes {
-    width: 15%;
+    width: 10%;
   }
 
   .data-rows {
@@ -51,4 +51,4 @@ export const tableStyles = `
     color: #0056b3;
     text-decoration: none;
   }
-`;
+`

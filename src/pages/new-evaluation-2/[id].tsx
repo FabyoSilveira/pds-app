@@ -87,7 +87,6 @@ export const NewEvaluation2: NextPage = () => {
     api
       .post('Evaluation', payload)
       .then((res) => {
-        console.log(res)
         router.push('/my-evaluations')
       })
       .catch((err) => {
@@ -131,10 +130,6 @@ export const NewEvaluation2: NextPage = () => {
     auxPayloadStruct.idUser = Number(user?.id)
     setPayload(auxPayloadStruct)
   }, [course, questions])
-
-  useEffect(() => {
-    console.log(payload)
-  }, [payload])
 
   const setAnswer = (ev: any, id: any) => {
     setError({ active: false, message: '' })
