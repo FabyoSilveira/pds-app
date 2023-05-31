@@ -89,9 +89,9 @@ Eu como usuário gostaria de me cadastrar no sistema
 - Criação dos componentes da interface de cadastro.[Fabyo] (Done)
 - Criação da tela de cadastro.[Fabyo] (Done)
 - Integração do front com o serviço de cadastro. [Fabyo] (Done)
-- Criação das tabelas de usuário [Tais]
-- Criação da rota de insert para cadastro de usuário. [Tais]
-- Criação da tela de cadastro.[Tais]
+- Criação das tabelas de usuário [Tais]  (Done)
+- Criação da rota de insert para cadastro de usuário. [Tais] (Done)
+- Criação da tela de cadastro. [Ana]
 - Criação da tela de ver perfil. [Ana]
 - Criação da tela de minhas avaliações. [Ana]
 - Criação da tela de explorar avaliações. [Ana]
@@ -120,16 +120,16 @@ Como usuário eu quero avaliar as disciplinas e professores das matérias que j�
 
 -- Banco:
 
-- Criar tabela de disciplinas [Tais]
-- Criar tabela de professores [Tais]
+- Criar tabela de disciplinas [Tais] (Done)
+- Criar tabela de professores [Tais] (Done)
 - Criar tabela com perguntas [Ailton]
 - Criar tabela de avaliação [Ailton]
   (id_avaliação id_disciplina id_professor id_questionario id_usuario resposta dataAvaliação)
 
   --API:
 
-- Criar controller de disciplinas [Tais]
-- Criar controller de professores [Tais]
+- Criar controller de disciplinas [Tais] (Done)
+- Criar controller de professores [Tais] (Done)
 - Criar controller para get de perguntas [Ailton]
 
 --Front:
@@ -141,7 +141,7 @@ Como usuário eu quero avaliar as disciplinas e professores das matérias que j�
 --API:
 
 - Criar controler de Insert avaliação [Ailton]
-- Criar controller de Update avaliação [Tais]
+- Criar controller de Update avaliação [Tais] (Done)
 
 --Front:
 
@@ -163,7 +163,7 @@ Eu como usuário gostaria de visualizar as notas dos professores avaliados
 
 #### - Tarefas e responsáveis
 
-- Criar rota que gere a média das avaliações dos professores [Tais]
+- Criar rota que gere a média das avaliações dos professores [Tais] (Cancelado)
 - Criar tela de visualização de avaliação de professores [Fabyo]
 
 ### 6 - Visualizar avaliação geral das disciplinas
@@ -172,7 +172,7 @@ Eu como usuário gostaria de visualizar as disciplinas avaliadas e suas notas m�
 
 #### - Tarefas e responsáveis
 
-- Criar rota que gere a média das avaliações das disciplinas [Tais]
+- Criar rota que gere a média das avaliações das disciplinas [Tais] (Done)
 - Criar tela de visualização de avaliação das disciplinas:
   Criar componente de professores relacionados [Ana]
   Criar componente de avaliação (barra crescente com percentual avaliativo para cada pergunta) [Ana]
